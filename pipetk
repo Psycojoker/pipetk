@@ -1,0 +1,18 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+text = """This script do nothing except printing the list of available scripts.
+
+Pipetk is a collection of scripts to work on continuous stream of informations
+like tail -f output using shell pipes.
+
+All scripts name start with 'p' (for pipe).
+
+Available scripts:
+    * puniq: eliminate duplications, usage: stream | puniq
+"""
+
+if __name__ == "__main__":
+    print text
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:
