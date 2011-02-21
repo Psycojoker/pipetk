@@ -14,6 +14,13 @@ setup(name='PipeTK',
       scripts=[],
       license = "GPLv3+",
       keywords="sh bash shell pipe stream",
+      classifiers=['Development Status :: 2 - Beta',
+                   'Environment :: Console',
+                   'Intended Audience :: End Users/Desktop',
+                   'License :: OSI Approved :: GNU General Public License (GPL)',
+                   'Programming Language :: Python',
+                  ],
+
      )
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
