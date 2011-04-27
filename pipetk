@@ -24,7 +24,39 @@ like tail -f output using shell pipes.
 All scripts name start with 'p' (for pipe).
 
 Available scripts:
-    * puniq: eliminate duplications, usage: stream | puniq
+ * pipetk: list this text.
+
+ * puniq: eliminate duplications in real time via a unix pipe.(| sort | uniq
+   waits for the full stream to be completed and also sort it, therefor it, for
+   example, won't works between a rsstail|feedstail and an ii file).
+   Example: feedstail -u http://reddit.com/.rss | puniq
+
+ * pmerge: open a named pipe and write to stdout everything written in the named
+   pipe. The first argument given is the name of the named pipe. It doesn't
+   managed in any way the possible conflicts between multiple process that write
+   on that pipe at the same time.
+   Silly example: pmerge PIPE > irc.freenode.net/#laquadrature & echo "pouet" > PIPE
+
+ * purls: really simple url extracting tools. It split each line it receives by
+   white space then display on a new line each words that starts with either
+   "http" or "https".
+   Example: echo "there is 2 urls in this sentence: this one http://blog.worlddomination.be and this one http://laquadrature.net" | purls
+   result:
+   http://blog.worlddomination.be
+   http://laquadrature.net
+
+ * pdetinyfy: get the real url of a shortened url. Works only by receiving one
+   url per line.
+   Example: echo "http://ur1.ca/4110r" | pdetinyfy
+   Result: http://laquadrature.net
+   echo "foo http://ur1.ca/4110r bar" | pdetinyfy <- won't work, use this instead:
+   echo "foo http://ur1.ca/4110r bar" | purls | pdetinyfy
+
+ * purltitle: get an url in input and output the url followed by it's title.
+   Works only by receiving one url per line. For the moment will miserably fail
+   if it doesn't managed to connect to the website.
+   Example: echo "http://laquadrature.net" | purltitle
+   Result: http://laquadrature.net La Quadrature du Net | Internet et Libertés
 """
 
 if __name__ == "__main__":
