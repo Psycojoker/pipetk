@@ -3,7 +3,7 @@ Pipe Tool Kit
 
 This tool kit is an attempt to compile a set of tools I've created to solve
 problems for La Quadrature du Net. Those tools are designed to works with unix
-pipe. They follow the unix philosophy and aim to stay simple.
+shell pipe. They follow the unix philosophy and aim to stay simple.
 
 I'm going to try to keep them at least a bit documented but since I'm always in
 an hurry I can't guaranteed this will always be the case.
@@ -27,9 +27,9 @@ Current tools
 
 * pipetk: list the available commands with the informations bellow.
 
-* puniq: eliminate duplications in real time via a unix pipe.(| sort | uniq
-  waits for the full stream to be completed and also sort it, therefor it, for
-  example, won't works between a rsstail|feedstail and an ii file).
+* puniq: eliminate duplications in real time via a shell unix pipe.(| sort |
+  uniq waits for the full stream to be completed and also sort it, therefor it,
+  for example, won't works between a rsstail|feedstail and an ii file).
   Example: feedstail -u http://reddit.com/.rss | puniq
 
 * pmerge: open a named pipe and write to stdout everything written in the named
