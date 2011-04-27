@@ -1,0 +1,18 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+import sys
+from urllib2 import urlopen
+
+def run():
+    a = sys.stdin.readline()
+    while a:
+        url = urlopen(a).geturl()
+        sys.stdout.write("%s\n" % url)
+        sys.stdout.flush()
+        a = sys.stdin.readline()
+
+if __name__ == "__main__":
+    run()
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:
