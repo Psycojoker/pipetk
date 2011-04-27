@@ -1,0 +1,25 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+import sys
+import os
+
+def run():
+    try:
+        os.mkfifo(sys.argv[1])
+    except OSError:
+        pass
+    pipe = open(sys.argv[1], "r+")
+    a = pipe.readline()
+    while a:
+        sys.stdout.write(a)
+        sys.stdout.flush()
+        a = pipe.readline()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print "need name for the namedpipe"
+        sys.exit(0)
+    run()
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:
