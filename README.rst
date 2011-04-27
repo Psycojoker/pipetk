@@ -47,8 +47,7 @@ Current tools
   http://laquadrature.net
 
 * pdetinyfy: get the real url of a shortened url. Works only by receiving one
-  url per line. For the moment will miserably fail if it doesn't managed to
-  connect to the website.
+  url per line.
   Example: echo "http://ur1.ca/4110r" | pdetinyfy
   Result: http://laquadrature.net
   echo "foo http://ur1.ca/4110r bar" | pdetinyfy <- won't work, use this instead:
