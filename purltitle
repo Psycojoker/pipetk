@@ -1,0 +1,23 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+import sys
+from mechanize import Browser
+
+def run():
+    b = Browser()
+    a = sys.stdin.readline()
+    while a:
+        try:
+            b.open(a)
+            a = "%s %s\n" % (a[:-1], b.title())
+            sys.stdout.write(a)
+        except Exception, e:
+            sys.stderr.write("%s" % e)
+        sys.stdout.flush()
+        a = sys.stdin.readline()
+
+if __name__ == "__main__":
+    run()
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:
