@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+import sys
+
+def extract(text):
+    return [i for i in text.split() if i.startswith("http://") or i.startswith("https://")]
+
+def run():
+    a = sys.stdin.readline()
+    while a:
+        urls = extract(a)
+        if urls:
+            sys.stdout.write("\n".join(urls) + "\n")
+            sys.stdout.flush()
+        a = sys.stdin.readline()
+
+if __name__ == "__main__":
+    run()
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:
