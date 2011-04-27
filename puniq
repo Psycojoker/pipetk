@@ -17,11 +17,12 @@
 
 import sys
 
-anti_doublons = set()
-a = sys.stdin.readline()
-while a:
-    if a not in anti_doublons:
-        sys.stdout.write(a)
-        sys.stdout.flush()
-        anti_doublons.add(a)
+if __name__ == "__main__":
+    anti_duplications = set()
     a = sys.stdin.readline()
+    while a:
+        if a not in anti_duplications:
+            sys.stdout.write(a)
+            sys.stdout.flush()
+            anti_duplications.add(a)
+        a = sys.stdin.readline()
