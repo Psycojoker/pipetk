@@ -89,6 +89,7 @@ All those tools are released under the `GNU General Public License v3`_ or later
 
 Feedback
 ========
-For any feedback you can contact me at cortex_AT_worlddomination_._be
+
+For any feedback you can contact me at <cortex at worlddomination dot be>.
 
 Laurent Peuch
