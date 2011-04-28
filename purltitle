@@ -1,16 +1,18 @@
 #!/usr/bin/python
-# -*- coding:Utf-8 -*-
+# -*- coding:utf-8 -*-
 
 import sys
-from mechanize import Browser
+from urllib2 import urlopen
+from BeautifulSoup import BeautifulSoup
 
 def run():
-    b = Browser()
     a = sys.stdin.readline()
     while a:
         try:
-            b.open(a)
-            a = "%s %s\n" % (a[:-1], b.title())
+            html = urlopen(url).read()
+            title = BeautifulSoup(html).title.string
+
+            a = "%s %s\n" % (a[:-1], title)
             sys.stdout.write(a)
         except Exception, e:
             sys.stderr.write("%s" % e)
