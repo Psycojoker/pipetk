@@ -12,7 +12,7 @@ WHITESPACES = compile(r'\s+')
 def get_title(url):
     html = urlopen(url).read()
     soup = BeautifulSoup(html)
-    title = soup.title.string if soup.title else u''
+    title = soup.title.string if soup.title and soup.title.string else u''
     # Normalize whitespaces
     title = title.strip()
     title = WHITESPACES.sub(' ', title)
