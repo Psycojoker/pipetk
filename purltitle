@@ -2,19 +2,30 @@
 # -*- coding:utf-8 -*-
 
 import sys
-from urllib2 import urlopen
 from BeautifulSoup import BeautifulSoup
+from re import compile
+from urllib2 import urlopen
+
+
+WHITESPACES = compile(r'\s+')
+
+def get_title(url):
+    html = urlopen(url).read()
+    soup = BeautifulSoup(html)
+    title = soup.title.string if soup.title else u''
+    # Normalize whitespaces
+    title = title.strip()
+    title = WHITESPACES.sub(' ', title)
+
+    url = u'%s %s\n' % (url[:-1], title)
+    return url.encode('utf-8')
 
 def run():
     url = sys.stdin.readline()
     while url:
         try:
-            html = urlopen(url).read()
-            soup = BeautifulSoup(html)
-            title = soup.title.string if soup.title else u''
-
-            url = u'%s %s\n' % (url[:-1], title)
-            sys.stdout.write(url.encode('utf-8'))
+            title = get_title(url)
+            sys.stdout.write(title)
         except Exception, e:
             sys.stderr.write("%s" % e)
         sys.stdout.flush()
