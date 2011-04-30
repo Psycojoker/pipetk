@@ -6,18 +6,18 @@ from urllib2 import urlopen
 from BeautifulSoup import BeautifulSoup
 
 def run():
-    a = sys.stdin.readline()
-    while a:
+    url = sys.stdin.readline()
+    while url:
         try:
             html = urlopen(url).read()
             title = BeautifulSoup(html).title.string
 
-            a = "%s %s\n" % (a[:-1], title)
-            sys.stdout.write(a)
+            url = "%s %s\n" % (url[:-1], title)
+            sys.stdout.write(url)
         except Exception, e:
             sys.stderr.write("%s" % e)
         sys.stdout.flush()
-        a = sys.stdin.readline()
+        url = sys.stdin.readline()
 
 if __name__ == "__main__":
     run()
