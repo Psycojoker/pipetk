@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# -*- coding:Utf-8 -*-
+
+import time
+import sys
+
+from pipetk import PipeTemplate
+
+class Lag(PipeTemplate):
+    WITH_ENDL = False
+    def __init__(self, duration=1):
+        self.duration = duration
+
+    def process(self, line):
+        yield line
+        time.sleep(self.duration)
+
+if __name__ == "__main__":
+    Lag(float(sys.argv[1]) if len(sys.argv) > 1 else 1).run()
+
+# vim:set shiftwidth=4 tabstop=4 expandtab:

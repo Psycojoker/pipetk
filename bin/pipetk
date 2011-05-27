@@ -57,6 +57,11 @@ Available scripts:
    if it doesn't managed to connect to the website.
    Example: echo "http://laquadrature.net" | purltitle
    Result: http://laquadrature.net La Quadrature du Net | Internet et Libertés
+
+ * plag: slow down the displaying of a stream by sleeping a give time beetwen each line
+   Can have the number of seconds the sleep as arg (accept float value).
+   Example: dmseg | plag
+   or: dmesg | plag 60
 """
 
 if __name__ == "__main__":

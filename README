@@ -79,6 +79,20 @@ Current tools
     $ echo "http://laquadrature.net" | purltitle
     http://laquadrature.net La Quadrature du Net | Internet et Libertés
 
+* plag: slow down the displaying of a stream by sleeping a give time beetwen each line
+  Can have the number of seconds the sleep as arg (accept float value).
+  Example:
+
+  ::
+
+    dmseg | plag
+
+  or:
+
+  ::
+
+    dmesg | plag 60
+
 
 Licence
 =======
