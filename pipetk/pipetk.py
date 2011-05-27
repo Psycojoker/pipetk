@@ -16,7 +16,10 @@ class PipeTemplate(object):
         pass
 
     def run(self):
-        self.loop()
+        try:
+            self.loop()
+        except KeyboardInterrupt:
+            sys.exit(0)
 
     def process(self, line):
         pass
