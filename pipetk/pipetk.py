@@ -38,6 +38,8 @@ class PipeTemplate(object):
                 else:
                     sys.stdout.write("%s" % result)
                 sys.stdout.flush()
+        except IOError:
+            sys.exit(1)
         except Exception, e:
             if self.FAIL_ON_EXCEPTION:
                 raise e
