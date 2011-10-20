@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:Utf-8 -*-
 
-from pipetk import PipeTemplate
+from pipetk import *
 
 if __name__ == "__main__":
     pass

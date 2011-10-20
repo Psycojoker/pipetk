@@ -3,6 +3,7 @@
 
 import sys
 import traceback
+import re
 
 class PipeTemplate(object):
     FAIL_ON_EXCEPTION = False
@@ -49,6 +50,29 @@ class PipeTemplate(object):
             if self.RETRY and number_of_retry < self.MAX_RETRY:
                 self.iter(line, number_of_retry + 1)
 
+class URLPipeTemplate(PipeTemplate):
+    WITH_EXTRA_SPACE=False
+
+    def process(self, line):
+        if self.WITH_EXTRA_SPACE:
+            yield re.sub('https?://[^ ]+ ?', self._process_url, line[:-1])
+        else:
+            yield re.sub('https?://[^ ]+', self._process_url, line[:-1])
+
+    def _process_url(self, url):
+        url = url.group()
+        try:
+            return self.process_url(url)
+        except Exception, e:
+            if self.FAIL_ON_EXCEPTION:
+                raise e
+            if self.DISPLAY_ERROR:
+                traceback.print_exc(file=sys.stderr)
+                sys.stderr.write("%s\n" % e)
+            return url
+
+    def process_url(self, url):
+        raise NotImplemented
 
 if __name__ == "__main__":
     pass
