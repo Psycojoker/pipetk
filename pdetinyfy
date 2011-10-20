@@ -16,18 +16,14 @@
 #
 # Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be>
 
-import sys
 from urllib2 import urlopen
+from pipetk import URLPipeTemplate
 
-def run():
-    a = sys.stdin.readline()
-    while a:
-        url = urlopen(a).geturl()
-        sys.stdout.write("%s\n" % url)
-        sys.stdout.flush()
-        a = sys.stdin.readline()
+class Detinify(URLPipeTemplate):
+    def process_url(self, url):
+        return urlopen(url).geturl()
 
 if __name__ == "__main__":
-    run()
+    Detinify().run()
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
