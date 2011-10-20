@@ -16,21 +16,14 @@
 #
 # Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be>
 
-import sys
+import re
+from pipetk import PipeTemplate
 
-def extract(text):
-    return [i for i in text.split() if i.startswith("http://") or i.startswith("https://")]
-
-def run():
-    a = sys.stdin.readline()
-    while a:
-        urls = extract(a)
-        if urls:
-            sys.stdout.write("\n".join(urls) + "\n")
-            sys.stdout.flush()
-        a = sys.stdin.readline()
+class URLs(PipeTemplate):
+    def process(self, line):
+        return re.findall('https?://[^ ]+', line)
 
 if __name__ == "__main__":
-    run()
+    URLs().run()
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
