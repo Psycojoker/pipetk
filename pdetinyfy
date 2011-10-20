@@ -16,14 +16,33 @@
 #
 # Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be>
 
+import sys
+import re
 from urllib2 import urlopen
 from pipetk import URLPipeTemplate
 
 class Detinify(URLPipeTemplate):
+    def __init__(self, ignore_list=list()):
+        self.ignore_list = map(self._format_urls, ignore_list)
+
+        print self.ignore_list
+
+    def _format_urls(self, url):
+        if url.startswith("http://"):
+            url = "https?://" + url[7:]
+        elif url.startswith("https://"):
+            url = "https?://" + url[8:]
+        else:
+            url = "https?://" + url
+        return url + ".*"
+
     def process_url(self, url):
+        if filter(lambda x: re.match(x, url), self.ignore_list):
+            return url
+        print "a"
         return urlopen(url).geturl()
 
 if __name__ == "__main__":
-    Detinify().run()
+    Detinify(sys.argv[1:]).run()
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
