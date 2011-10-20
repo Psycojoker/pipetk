@@ -16,37 +16,16 @@
 #
 # Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be>
 
-import sys
-from BeautifulSoup import BeautifulSoup
-from re import compile
-from urllib2 import urlopen
+from mechanize import Browser
+from pipetk import URLPipeTemplate
 
-
-WHITESPACES = compile(r'\s+')
-
-def get_title(url):
-    html = urlopen(url).read()
-    soup = BeautifulSoup(html)
-    title = soup.title.string if soup.title and soup.title.string else u''
-    # Normalize whitespaces
-    title = title.strip()
-    title = WHITESPACES.sub(' ', title)
-
-    url = u'%s %s\n' % (url[:-1], title)
-    return url.encode('utf-8')
-
-def run():
-    url = sys.stdin.readline()
-    while url:
-        try:
-            title = get_title(url)
-            sys.stdout.write(title)
-        except Exception, e:
-            sys.stderr.write("%s" % e)
-        sys.stdout.flush()
-        url = sys.stdin.readline()
+class URLsTitle(URLPipeTemplate):
+    def process_url(self, url):
+        b = Browser()
+        b.open(url)
+        return "%s %s" % (url, b.title())
 
 if __name__ == "__main__":
-    run()
+    URLsTitle().run()
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
