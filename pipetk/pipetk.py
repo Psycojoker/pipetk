@@ -22,7 +22,7 @@ class PipeTemplate(object):
             sys.exit(0)
 
     def process(self, line):
-        pass
+        raise NotImplemented
 
     def loop(self):
         line = sys.stdin.readline()
