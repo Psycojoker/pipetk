@@ -6,7 +6,7 @@ from setuptools import setup
 setup(name='PipeTK',
       version='0.1.2',
       description='Collection of small scripts that modify input received via shell pipe',
-      long_description = open('README').read(),
+      long_description = open('README.rst').read(),
       author='Laurent Peuch',
       author_email='cortex@worlddomination.be',
       url='http://blog.worlddomination.be/pipetk',
