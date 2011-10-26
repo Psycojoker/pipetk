@@ -25,7 +25,8 @@ class UniqWithRT(PipeTemplate):
 
     def process(self, line):
         cleaned_line = "".join(line.split("-")[:-1])
-        cleaned_line = re.sub("RT @[^ ]+: ", lambda x: "", cleaned_line)
+        cleaned_line = re.sub("^[^:]+: ", lambda x: "", cleaned_line)
+        cleaned_line = re.sub("[MRL]T *@[^ :,]+[: ,]*", lambda x: "", cleaned_line)
         if cleaned_line not in self.anti_duplications:
             self.anti_duplications.add(cleaned_line)
             yield line
