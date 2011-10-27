@@ -14,18 +14,20 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Copyright (C) 2011  Benjamin Ooghe  <b.ooghe@free.fr>
+#
+# Patch:
+# Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be> - move it to URLPipeTemplate
 
 import re
-from pipetk import PipeTemplate
+from pipetk import URLPipeTemplate
 
-class CleanUrls(PipeTemplate):
-    WITH_ENDL = True
+class CleanUrls(URLPipeTemplate):
 
-    def process(self, line):
-        line = re.sub(r"[\?\&](utm_medium|utm_source|utm_campaign|xtor)=[^\&]*", r"", line, re.IGNORECASE)
-        line = re.sub(r"/#!/", r"/", line)
-        line = re.sub(r"(http://[^ ]+)#[^# ]*", r"\1", line, re.IGNORECASE)
-        yield line
+    def process_url(self, url):
+        url = re.sub(r"[\?\&](utm_medium|utm_source|utm_campaign|xtor)=[^\&]*", r"", url, re.IGNORECASE)
+        url = re.sub(r"/#!/", r"/", url)
+        url = re.sub(r"(http://[^ ]+)#[^# ]*", r"\1", url, re.IGNORECASE)
+        return url
 
 if __name__ == "__main__":
     CleanUrls().run()
