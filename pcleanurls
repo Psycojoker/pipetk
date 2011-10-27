@@ -13,25 +13,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright (C) 2011  Laurent Peuch  <cortex@worlddomination.be>
+# Copyright (C) 2011  Benjamin Ooghe  <b.ooghe@free.fr>
 
 import re
 from pipetk import PipeTemplate
 
-class UniqWithRT(PipeTemplate):
-    WITH_ENDL = False
-    def __init__(self):
-        self.anti_duplications = set()
+class CleanUrls(PipeTemplate):
+    WITH_ENDL = True
 
     def process(self, line):
-        cleaned_line = "".join(line.split("-")[:-1])
-        cleaned_line = re.sub("^[^:]+: ", lambda x: "", cleaned_line)
-        cleaned_line = re.sub("[MRL]T *@[^ :,]+[: ,]*", lambda x: "", cleaned_line)
-        if cleaned_line not in self.anti_duplications:
-            self.anti_duplications.add(cleaned_line)
-            yield line
+        line = re.sub(r"[\?\&](utm_medium|utm_source|utm_campaign|xtor)=[^\&]*", r"", line, re.IGNORECASE)
+        line = re.sub(r"/#!/", r"/", line)
+        line = re.sub(r"(http://[^ ]+)#[^# ]*", r"\1", line, re.IGNORECASE)
+        yield line
 
 if __name__ == "__main__":
-    UniqWithRT().run()
+    CleanUrls().run()
 
 # vim:set shiftwidth=4 tabstop=4 expandtab:
+
