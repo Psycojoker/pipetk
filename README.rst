@@ -124,24 +124,34 @@ This is the standard template.
 
     class Example(PipeTemplate):
         # Options: displayed here with their default value, you can change it by redefining it
+
         # FAIL_ON_EXCEPTION = False # define if the pipe will stop when an exception is raised
+
         # DISPLAY_ERROR = True # define if the exception backtrace and message are displayed
+
         # RETRY = False # define if the pipe must retry it's processing on an exception
+
         # MAX_RETRY = 3 # define the number of time the pipe must retry to process it's input on an exception
+
         # UNMODIFIED_TO_STDOUT_ON_FAIL = False # define if on an exception the unmodified text must be written
+
         # WITH_ENDL = True # define if the endl char must be sended to the process function
 
         def process(self, line):
             # called everytime a line is written on stdin, you must implement it
 
             # VERY IMPORTANT: process must return something iterable, either a
+
             # list or by being a decorator (by using yield). This allow you to
+
             # return severals different things.
 
             # do you stuff
 
             yield line
+
             # or
+
             return [a, b, c, d]
 
     if __name__ == "__main__":
@@ -158,16 +168,22 @@ This is a template to work on every urls of a stream.
 
     class Example(URLPipeTemplate):
         # Inherite from all the options of the PipeTemplate
+
         # Other option:
+
         # WITH_EXTRA_SPACE=False # define if the space that may follow the url
+
                                  # in the string is send to the processing function
 
         # CAREFULL: this is process_URL, not process, you can't implement
+
         # process since it's already implemented to build this new template.
+
         def process_url(self, url):
             # called on every url encoutered
 
             # you must return a string
+
             return ""
 
     if __name__ == "__main__":
