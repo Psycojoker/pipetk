@@ -9,12 +9,12 @@ I'm going to try to keep them at least a bit documented but since I'm always in
 an hurry I can't guaranteed this will always be the case.
 
 You can have an idea of the power of this kind of problems solving approach
-here: http://blog.worlddomination.be/microblogging/ (this tuto doesn't features
-those tools for the moment).
+here: http://blog.worlddomination.be/projects/ungarage.html (this tuto doesn't
+features those tools for the moment).
 
 For organisation reason all the commands starts with the letter "p".
 
-There is place for a LOTS of ameliorations, most of those tools are very
+There is place for a lots of ameliorations, most of those tools are very
 simplistic and could be generalised (for example pdetinyfy or purltitle could
 be apply to each urls of a sentence, purls could use regex and could be
 generalised for anything by accepting regex as an argument).
