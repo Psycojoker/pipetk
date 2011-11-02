@@ -196,6 +196,8 @@ Changelog
 
 * various bug fixs
 
+* add doc on how to write new pipe utils
+
 0.1
 ---
 
