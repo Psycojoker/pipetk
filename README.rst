@@ -57,27 +57,22 @@ Current tools
     http://blog.worlddomination.be
     http://laquadrature.net
 
-* pdetinyfy: get the real url of a shortened url. Works only by receiving one
-  url per line.
+* pdetinyfy: get the real url of a shortened url. FIXED: works on urls inside a string
   Example:
 
   ::
 
-    $ echo "http://ur1.ca/4110r" | pdetinyfy
-    http://laquadrature.net
-    echo "foo http://ur1.ca/4110r bar" | pdetinyfy # won't work
-    echo "foo http://ur1.ca/4110r bar" | purls | pdetinyfy # use this instead
-    http://laquadrature.net
+    $ echo "foo http://ur1.ca/4110r bar" | pdetinyfy
+    foo http://laquadrature.net bar
 
 * purltitle: get an url in input and output the url followed by it's title.
-  Works only by receiving one url per line. For the moment will miserably fail
-  if it doesn't managed to connect to the website.
+  FIXED: works on urls inside a string
   Example:
 
   ::
 
-    $ echo "http://laquadrature.net" | purltitle
-    http://laquadrature.net La Quadrature du Net | Internet et Libertés
+    $ echo "foo http://laquadrature.net bar" | purltitle
+    foo http://laquadrature.net La Quadrature du Net | Internet et Libertés bar
 
 * plag: slow down the displaying of a stream by sleeping a give time beetwen each line
   Can have the number of seconds the sleep as arg (accept float value).
@@ -93,6 +88,22 @@ Current tools
 
     dmesg | plag 60
 
+* puniqrt: try to avoid duplications of similar tweets. For example by removing
+  RT tweets of a tweet that has already been displayed.
+  Behave in the same way that puniq.
+
+* premoveurls: remove the urls from a string. This is more an example script
+  for the URLPipeTemplate class than something really usefull.
+  Example:
+
+  ::
+
+    $ echo "foo http://laquadrature.net bar" | premoveurls
+    "foo bar"
+
+
+* cleanurls: clean urls by removing useless informations like tracking stuff
+  like "?utm_*" args added to urls.
 
 Licence
 =======
