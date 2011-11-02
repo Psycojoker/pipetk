@@ -105,6 +105,29 @@ Current tools
 * cleanurls: clean urls by removing useless informations like tracking stuff
   like "?utm_*" args added to urls.
 
+Changelog
+=========
+
+0.2
+---
+
+* pdetinyfy now works for urls inside a string
+
+* new script: puniqrt to try to eliminate duplications for tweets
+
+* new template to build pipes utils that works on the urls of a string
+
+* add premoveurls as en example script for the new template
+
+* new script: pcleanurls to remove useless tracking pieces of urls (like utm_* stuff)
+
+* various bug fixs
+
+0.1
+---
+
+* Init
+
 Licence
 =======
 
