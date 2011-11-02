@@ -171,9 +171,7 @@ This is a template to work on every urls of a stream.
 
         # Other option:
 
-        # WITH_EXTRA_SPACE=False # define if the space that may follow the url
-
-                                 # in the string is send to the processing function
+        # WITH_EXTRA_SPACE=False # define if the space that may follow the url in the string is send to the processing function
 
         # CAREFULL: this is process_URL, not process, you can't implement
 
