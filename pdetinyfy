@@ -18,7 +18,7 @@
 
 import sys
 import re
-from urllib2 import urlopen
+from urllib2 import urlopen, HTTPError
 from pipetk import URLPipeTemplate
 
 class Detinify(URLPipeTemplate):
@@ -37,7 +37,10 @@ class Detinify(URLPipeTemplate):
     def process_url(self, url):
         if filter(lambda x: re.match(x, url), self.ignore_list):
             return url
-        return urlopen(url).geturl()
+        try:
+            return urlopen(url).geturl()
+        except HTTPError:
+            return url
 
 if __name__ == "__main__":
     Detinify(sys.argv[1:]).run()
