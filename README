@@ -102,7 +102,7 @@ Current tools
     "foo bar"
 
 
-* cleanurls: clean urls by removing useless informations like tracking stuff
+* pcleanurls: clean urls by removing useless informations like tracking stuff
   like "?utm_*" args added to urls.
 
 Coding new pipe utils
