@@ -105,6 +105,9 @@ Current tools
 * pcleanurls: clean urls by removing useless informations like tracking stuff
   like "?utm_*" args added to urls.
 
+* ptweetlen: return the len a string will have on tweeter with it's urls
+  tinyfied by the t.do domain
+
 Coding new pipe utils
 =====================
 
