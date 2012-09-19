@@ -21,7 +21,7 @@ from pipetk import PipeTemplate
 
 class URLs(PipeTemplate):
     def process(self, line):
-        return re.findall('https?://[^ ]+', line)
+        return re.findall('https?://[^ ]+', line.strip())
 
 if __name__ == "__main__":
     URLs().run()
