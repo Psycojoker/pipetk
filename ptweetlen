@@ -21,7 +21,7 @@ from pipetk import PipeTemplate
 
 class TweetLen(PipeTemplate):
     def process(self, line):
-        yield str(len(sub("https?://[^ ]+", "http://t.co/.........", line.decode("Utf-8").strip())))
+        yield str(len(sub("http(s?)://[^ ]+", "http\\1://t.co/..........", line.decode("Utf-8").strip())))
 
 if __name__ == "__main__":
     TweetLen().run()
